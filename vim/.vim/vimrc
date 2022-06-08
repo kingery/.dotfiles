@@ -1,30 +1,13 @@
-call plug#begin()
-"" load plugins here
-"
-"" nerd tree
-"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-"" autocomplete
-"" powerline - added display
-"Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plug 'powerline/powerline'
-"Plug 'Valloric/YouCompleteMe'
-Plug 'morhetz/gruvbox'
-Plug 'ctrlpvim/ctrlp.vim'
-call plug#end()
-"
-"" ignore .pyc files in NERDTree
-"let NERTreeIgnore=['\.pyc$', '\~$']
+""" BASELINE SETTINGS
+set nocompatible
+syntax on
 
 " set tab indent to 4 spaces
-set nocompatible
-
 set is 
 set smartindent
-set tabstop=4
+set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
-
-syntax on
 
 " allow all backspaces within insert mode
 set bs=2
@@ -34,59 +17,72 @@ set ruler
 set number
 set numberwidth=3
 
-" no beep when illegal key pressed
 set visualbell
 
 " confirm save upon exitiing w/o saving changes
 set confirm
 
-" case-insensitive search
-set ignorecase
+" search
+"set ignorecase
 set smartcase
+set incsearch
 
-" set up folding preferences
-set foldmethod=indent
-set foldlevel=99
-
-" larger status line
-" set statusline=2
-
-" cursor line
-"set cursorline
-
-"hi cursorline term=bold cterm=bold guibg=grey40
+set cursorline
 set colorcolumn=80
+set nowrap
 
-" visual line breaks at words
-set wrap
-set linebreak
+" backups/undo
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
 
-set wildmenu "graphical search for autocomplete
-set lazyredraw "don't redraw unless necessary
-set showmatch "highlight matching bracket/parentheses/etc
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/bin/*,*/build/*
 
-color gruvbox
+""" PLUGINS
+call plug#begin()
+
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-fugitive'
+Plug 'jremmen/vim-ripgrep'
+Plug 'vim-utils/vim-man'
+Plug 'lyuts/vim-rtags'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'mbbill/undotree'
+
+call plug#end()
+
+colorscheme gruvbox
 set background=dark
 
-" set Leader to <Space>
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
+""" MAPPINGS
+" key mappings
 let mapleader = " "
 
-" key mappings
 nmap <S-space> i
 imap jj <Esc>
 nmap :Q :q
 nmap ss :w<CR>
 nmap ff gt
 nmap aa gT
-nmap gh <C-w>h
-nmap gj <C-w>j
-nmap gk <C-w>k
-nmap gl <C-w>l
 nmap <C-h> gT
 nmap <C-l> gt
 
-nnoremap <leader>w :w<CR>
-nnoremap <leader>i I
-nnoremap <leader>d dd
-nnoremap <leader>c ddO
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
 
+nnoremap <leader>u :UndotreeShow<CR>
+"pv - project view
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+"ps - project search
+nnoremap <leader>ps :Rg<SPACE>
+
+"nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
+"nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
