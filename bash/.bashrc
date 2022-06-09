@@ -100,9 +100,16 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+    echo "loaded ~/.bash_aliases"
 fi
 if [ -f ~/bashconfig/bash_aliases ]; then
     . ~/bashconfig/bash_aliases
+    echo "loaded ~/bashconfig/bash_aliases"
+fi
+# bash aliases for local machine (not to be stored in Git.....)
+if [ -f ~/.local_bash_aliases ]; then
+    . ~/.local_bash_aliases
+    echo "loaded ~/.local_bash_aliases"
 fi
 
 # enable programmable completion features (you don't need to enable

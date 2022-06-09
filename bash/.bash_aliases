@@ -17,6 +17,24 @@ alias ld="ls -lhd */"
 alias grep="grep --color=auto"
 alias lll="ls -lh | less"
 
+alias ppjson="python -m json.tool"
+
+# JAVA
+removeFromPath () {
+    export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+}
+
+function setjdk() {
+  if [ $# -ne 0 ]; then
+    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+    if [ -n "${JAVA_HOME+x}" ]; then
+      removeFromPath $JAVA_HOME/bin
+    fi
+    export JAVA_HOME=`/usr/libexec/java_home -v $@`
+    export PATH=$JAVA_HOME/bin:$PATH
+  fi
+}
+
 # commands to ignore in history
 export HISTIGNORE="&:[ ]*:clear:ls:ll:lt:history:c:..:...:....:lll:jc:pwd"
 
