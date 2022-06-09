@@ -48,7 +48,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'vim-utils/vim-man'
 Plug 'lyuts/vim-rtags'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'mbbill/undotree'
 
 call plug#end()
