@@ -127,3 +127,4 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 TERM=xterm-256color
+. "$HOME/.cargo/env"
