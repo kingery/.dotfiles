@@ -1,0 +1,6 @@
+[window]
+decorations = "buttonless"
+
+[window.padding]
+x = 18
+y = 16
