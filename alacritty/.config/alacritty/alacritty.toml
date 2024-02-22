@@ -1,6 +1,11 @@
+#import = ["/Users/scout.kingery/.config/alacritty/themes/gruvbox_dark.toml"]
+
 [window]
-decorations = "buttonless"
+#decorations = "none"
 
 [window.padding]
-x = 18
-y = 16
+x = 7
+y = 0
+
+[font]
+size = 13

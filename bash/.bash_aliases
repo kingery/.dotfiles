@@ -5,7 +5,7 @@ set -o vi
 
 # getting around
 alias c="clear"
-alias v="vim"
+alias v="nvim"
 alias py="python"
 alias ll="ls -lh"
 alias lt="ls -trlh"
@@ -50,3 +50,5 @@ export LESS_TERMCAP_se=$'\E0m'
 export LESS_TIMECAP_so=$'\E[38;5;246m'
 export LESS_TIMECAP_ue=$'\E0m'
 export LESS_TIMECAP_us=$'\R04;38;5;146m'
+
+export KUBE_EDITOR=nvim
